@@ -1,0 +1,18 @@
+# SELECT DATA
+
+- Untuk mengambil data di tabel, kita bisa menggunakan SQL dengan kata kunci SELECT
+- SELECT bisa digunakan untuk mengambil 
+  semua kolom yang ada di tabel, atau sebagian kolom saja
+- Jika kita ingin mengambil semua kolom, kita bisa 
+  gunakan karakter * (bintang)
+- Jika kita hanya ingin mengambil beberapa kolom saja, 
+  kita bisa sebutkan nama-nama kolom yang ingin kita ambil datanya
+
+    MENGAMBIL DATA :
+                      
+                      SELECT * FROM products;
+
+                      SELECT id, name, price, quantity FROM products;
+
+
+
