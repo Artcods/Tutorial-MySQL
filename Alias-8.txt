@@ -1,0 +1,35 @@
+# ALIAS
+
+- MySQL memiliki fitur untuk melakukan alias untuk kolom dan tabel
+- Alias berguna jika kita ingin mengubah nama kolom atau nama 
+  tabel ketika melakukan SELECT data
+- Mungkin saat ini alias untuk tabel tidak terlalu terlihat gunanya, 
+  tapi nanti ketika kita telah mempelajari tentang JOIN, maka fitur 
+  alias untuk tabel sangat berguna sekali
+
+    CONTOH ALIAS UNTUK KOLOM :
+               
+       SELECT 
+       id         AS  Kode,
+       name       AS  Nama,
+       category   AS  Kategori,
+       price      AS  Harga,
+       quantity   AS  Jumlah
+       FROM products;
+    
+    !# AS = SEBAGAI PERINTAH/KEYWORD UNTUK ALIAS
+              
+              
+   CONTOH ALIAS UNTUK TABEL :
+       
+       SELECT 
+       p.id       AS  Kode,
+       p.name     AS  Nama,
+       p.category AS  Kategori,
+       p.price    AS  Harga,
+       p.quantity AS  Jumlah
+       FROM products AS p;
+       
+       
+              
+              
