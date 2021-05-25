@@ -1,0 +1,9 @@
+# INSERT DATA
+
+- Sebelum kita meng memasukkan data kedalam tabel, tabel harus dibuat terlebih dahulu
+- Kita bisa menyebutkan kolom mana yang ingin kita isi, 
+  jika kita tidak menyebutkan kolom nya, artinya kolom tersebut tidak akan kita isi, 
+  dan secara otomatis kolom yang tidak kita isi, nilainya akan NULL, kecuali memiliki DEFAULT VALUE
+- Untuk memasukkan data kedalam tabel, kita bisa menggunakan perintah SQL yang bernama INSERT
+
+
