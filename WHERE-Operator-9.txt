@@ -4,7 +4,21 @@
 - Sebenarnya sangat banyak sekali operator yang bisa kita gunakan 
   ketika menggunakan where clause
 - Sekarang kita akan bahas satu per satu
-     
+
+     CONTOH :
+              INSERT INTO products(id, category, name, price, quantity)
+              VALUES ('P0006', 'Makanan', 'Bakso Rusuk', 25000, 200),
+                     ('P0007', 'Minuman', 'Es Jeruk', 10000, 300),
+                     ('P0008', 'Minuman', 'Es Campur', 15000, 500),
+                     ('P0009', 'Minuman', 'Es Teh Manis', 5000, 400),
+                     ('P0010', 'Lain-Lain', 'Kerupuk', 2500, 1000),
+                     ('P0011', 'Lain-Lain', 'Keripik Udang', 10000, 300),
+                     ('P0012', 'Lain-Lain', 'Es Krim', 5000, 200),
+                     ('P0013', 'Makanan', 'Mie Ayam Jamur', 20000, 50),
+                     ('P0014', 'Makanan', 'Bakso Telor', 20000, 150),
+                     ('P0015', 'Makanan', 'Bakso Aja', 25000, 300);
+
+
      OPERATOR PERBANDINGAN : 
      
                   ================================================
@@ -18,36 +32,34 @@
                   | >=          | Lebih dari atau samadengan     |
                   |-------------|--------------------------------|
             
+            
      MENCARI DATA DENGAN OPERATOR PERBANDINGAN :
                   
                   SELECT * FROM products
-                  WHERE quantity > 100;         <----- MENCARI products YANG quantity > 100
-
-                  
+                  WHERE quantity > 100;         <----- MENCARI products YANG   
+                  quantity > 100
+               
                   SELECT * FROM products
-                  WHERE quantity >= 100;
+                  WHERE quantity >= 100;        <----- MENCARI products YANG 
+                  quantity >= 100 
 
                   SELECT * FROM products
-                  WHERE category != 'Makanan';
+                  WHERE category != 'Makanan';  <----- MENCARI products YANG 
+                  category != 'Makanan' 
                   
                   SELECT *
                   FROM products
-                  WHERE category <> 'Minuman';
+                  WHERE category <> 'Minuman';  <----- MENCARI products YANG      
+                  category <> 'Minuman' 
 
+      
+      AND dan OR Operator 
+    
+- Kadang kita ingin mencari data dengan beberapa gabungan kondisi, kita bisa 
+  menggunakan operator AND dan OR
+- AND dan OR digunakan untuk menggabungkan beberapa dua operator
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
 
 
 
