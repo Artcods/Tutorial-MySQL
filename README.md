@@ -25,3 +25,7 @@ Database adalah tempat kita menyimpan table di MySQL
   namun lumrahnya, satu aplikasi akan menggunakan satu database
 
 
+
+
+
+(Eko Kurniawan Khannedy)
