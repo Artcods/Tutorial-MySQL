@@ -1,0 +1,23 @@
+# WHERE OPERATOR
+
+- Sebelumnya di materi where clause kita sudah menggunakan operator = (sama dengan)
+- Sebenarnya sangat banyak sekali operator yang bisa kita gunakan 
+  ketika menggunakan where clause
+- Sekarang kita akan bahas satu per satu
+     
+     OPERATOR PERBANDING : 
+     
+                  ================================================
+                  |   OPERATOR  |     Keterangan                 |
+                  |-------------|--------------------------------|
+                  | =           | Sama dengan                    |
+                  | <> atau !=  | Tidak sama dengan              |
+                  | <           | Kurang dari                    |
+                  | <=          | Kurang dari atau samadengan    |
+                  | >           | Lebih dari                     |
+                  | >=          | Lebih dari atau samadengan     |
+                  |-------------|--------------------------------|
+
+
+
+
