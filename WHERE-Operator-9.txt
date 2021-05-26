@@ -59,7 +59,42 @@
   menggunakan operator AND dan OR
 - AND dan OR digunakan untuk menggabungkan beberapa dua operator
 
-      
+    MENCARI DATA DENGAN OPERATOR AND :
+                   
+                  SELECT id, name, price, quantity 
+                  FROM products
+                  WHERE quantity > 100 AND price > 10000; <---- products ini keduanya harus benar    
+                  
+                  SELECT * FROM products
+                  WHERE quantity > 100 AND price > 20000; 
+  
+  
+     MENCARI DATA DENGAN OPERATOR OR :
+                  
+                  SELECT id, name, price, quantity
+                  FROM products
+                  WHERE quantity > 500 OR price > 5000;
+                  
+                  SELECT * FROM products
+                  WHERE quantity > 500 OR price > 5000;
+    
+    
+- MENGGABUNGKAN ANTARA AND DAN OR                   
+    
+     PRIORITAS DENGAN KURUNG () :
+                  
+                  SELECT id, name, price, quantity
+                  FROM products
+                  WHERE (category = 'Makanan' OR quantity > 500)
+                    AND price > 10000;
+
+                  SELECT * FROM products
+                  WHERE (category = 'Makanan' OR quantity > 500) AND price > 10000;
+                                          
+                                          ^
+                                          |
+                                          |
+                         YANG DI KURUNG LEBIH DI PRIORITASKAN         
 
 
 
