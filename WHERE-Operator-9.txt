@@ -5,7 +5,7 @@
   ketika menggunakan where clause
 - Sekarang kita akan bahas satu per satu
      
-     OPERATOR PERBANDING : 
+     OPERATOR PERBANDINGAN : 
      
                   ================================================
                   |   OPERATOR  |     Keterangan                 |
@@ -17,6 +17,37 @@
                   | >           | Lebih dari                     |
                   | >=          | Lebih dari atau samadengan     |
                   |-------------|--------------------------------|
+            
+     MENCARI DATA DENGAN OPERATOR PERBANDINGAN :
+                  
+                  SELECT * FROM products
+                  WHERE quantity > 100;         <----- MENCARI products YANG quantity > 100
+
+                  
+                  SELECT * FROM products
+                  WHERE quantity >= 100;
+
+                  SELECT * FROM products
+                  WHERE category != 'Makanan';
+                  
+                  SELECT *
+                  FROM products
+                  WHERE category <> 'Minuman';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
