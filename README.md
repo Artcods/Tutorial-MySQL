@@ -13,8 +13,7 @@ TUTORIAL MySQL DATABASE UNTUK PEMULA
   
 - Contoh DBMS yang populer seperti MySQL, PostgreSQL, MongoDB, Oracle, dan lain-lain
 
-#
-#
+
 # Databases
 
 
