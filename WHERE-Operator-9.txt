@@ -97,5 +97,85 @@
                          YANG DI KURUNG LEBIH DI PRIORITASKAN         
 
 
+# LIKE OPERATOR
+
+- LIKE operator adalah operator yang bisa kita 
+  gunakan untuk mencari sebagian data dalam String
+- Ini cocok sekali ketika kita hanya ingin mencari 
+  sebagian kata dalam String
+- Namun perlu diingat, operasi LIKE itu sangat lambat, 
+  oleh karena itu, tidak disarankan jika datanya sudah terlalu besar di tabel
+  Operasi LIKE tidak case sensitive, jadi huruf besar dan kecil tidak akan 
+  berpengaruh
+
+    HASIL OPERATOR LIKE :
+                
+                --------------------------------------------- 
+                |  LIKE OPERATOR |          HASIL           | 
+                |-------------------------------------------|
+                | LIKE 'b%'      | String dengan awalan b   |
+                | LIKE '%a'      | String dengan akhiran b  |
+                | LIKE '%nama%'  | String berisi nama       |
+                | NOT LIKE       | Tidak LIKE               |
+                ---------------------------------------------
+    CONTOH :  
+              SELECT * FROM products
+              WHERE name LIKE '%mie%'; <---- MENCARI DATA YANG BERNAMA 'mie'
+
+
+# NULL Operator
+
+- Untuk mencari data yang berisi NULL, kita tidak bisa 
+  menggunakan operator perbandingan = NULL.
+- Ada operator khusus untuk mencari data NULL, yaitu menggunakan NULL operator
+- IS NULL, artinya mencari yang NULL
+- IS NOT NULL, artinya mencari yang tidak NULL
+
+    MENCARI DATA MENGGUNAKAN NULL OPERATOR :
+              
+              SELECT * FROM products
+              WHERE description IS NULL; <--- MENCARI DATA YANG NULL
+              
+              SELECT * FROM products
+              WHERE description IS NULL; <--- MENCARI DATA YANG TIDAK NULL
+              
+
+# BETWEEN Operator
+
+- Kadang kita ingin mencari data yang >= dan <= secara sekaligus
+- Misal kita ingin mencari products yang harganya antara 10000 sampai 20000
+- Untuk melakukan ini, kita bisa 
+- menggunakan WHERE price >= 10000 AND price <= 20000
+- Namun ada operator BETWEEN yang bisa kita gunakan agar lebih sederhana
+- Untuk kebalikannya, kita bisa gunakan NOT BETWEEN
+      
+      MENCARI MENGGUNAKAN BETWEEN OPERATOR :
+               
+               SELECT * FROM products
+               WHERE price BETWEEN 10000 AND 20000 <--- MENCARI products YANG price NYA ANTARA 10000 AND 20000
+    
+               SELECT * FROM products
+               WHERE price NOT BETWEEN 10000 AND 20000
+
+
+# IN OPERATOR 
+
+- Operator IN adalah operator untuk melakukan pencarian 
+- sebuah kolom dengan beberapa nilai.
+- Misal kita ingin mencari products dengan category 
+- Makanan atau Minuman, maka kita bisa menggunakan operator IN
+
+    MENCARI MENGGUNAKAN IN OPERATOR :
+               
+               SELECT * FROM products
+               WHERE category IN ('Makanan', 'Minuman');
+               
+               SELECT * FROM products
+               WHERE category IN ('Makanan', 'Minuman'); <---- AKAN KELUAR YANG DILUAR MAKANAN DAN MINUMAN
+    
+    
+
+
+
 
 
