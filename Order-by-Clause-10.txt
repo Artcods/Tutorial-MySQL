@@ -1,0 +1,28 @@
+# ORDER BY CLAUSE
+
+- Untuk mengurutkan data ketika kita menggunakan perintah SQL SELECT, kita bisa 
+  menambahkan ORDER BY clause
+- ORDER BY clause digunakan untuk mengurutkan data berdasarkan kolom yang dipilih,
+  dan jenis urutan (ASC atau DESC)
+- Kita juga bisa mengurutkan tidak hanya terhadap satu kolom, tapi beberapa kolom
+      
+      MENGURUTKAN DATA :
+                  
+                  SELECT * FROM products
+                  ORDER BY price ASC, id DESC;
+                  
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
