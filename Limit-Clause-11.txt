@@ -1,0 +1,32 @@
+# LIMIT CLAUSE
+
+- Mengambil seluruh data di lebel bukanlah pilihan bijak, apalagi jika sudah banyak sekali
+- kita bisa membatasi jumlah data yang SQL SELECT dengan Limit clause
+- Selain membatasi jumlah data, kita juga bisa meng-skip sejumlah data yang tidak
+  ingin kita lihat 
+- Limit biasanya digunakan saat melakukan paging di aplikasi kita
+      
+       MEMBATASI HASIL QUERY :
+                 
+                 SELECT * FROM products
+                 WHERE price > 0 
+                 ORDER BY price
+                 LIMIT 2; <---- MAKSIMAL DUA DATA 
+                      
+                 SELECT * FROM products
+                 WHERE price > 0 
+                 ORDER BY price
+                 LIMIT 5; < MAKSIMAL LIMA DATA
+
+
+        SKIP HASIL QUERY :
+                 
+                 SELECT * FROM products
+                 WHERE price > 0 
+                 ORDER BY price
+                 LIMIT 2,2;
+
+
+
+
+
