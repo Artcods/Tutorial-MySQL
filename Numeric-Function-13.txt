@@ -1,0 +1,36 @@
+# NUMERIC FUNCTION
+
+- MySQL memiliki banyak Sekali fitur untuk manipulasi data angka
+- Hal ini memudahkan kita untuk memanipulasi data angka
+- Secara garis besar, fitur ini dibagi menjadi dua. Arithmetic Operator dan 
+  Mathematic Function
+      
+      ------------------------------------------------------------------------
+      | Name   | Description                                                 |
+      ------------------------------------------------------------------------
+      | %, MOD | MODULO OPERATOR (sisa bagi)                                 | 
+      | *      | MULTIPLICATION OPERATOR (dikali)                            |     
+      | +      | ADDITION OPERATOR (PERTAMBAHAN)                             | 
+      | -      | MINUS OPERATOR (PENGURANGAN)                                |     
+      | -      | CHANGE THE SIGN OF THE ARGUMENT (MENJADIKAN NEGATIF)        | 
+      | /      | DEVISION OPERATOR (PEMBAGIAN BISA MENJADI FLOATING POINT)   |
+      | DIV    | INTEGER DEVISION (PEMBAGIAN INTERGER/PEMBULATAN)            |
+      ------------------------------------------------------------------------
+
+      MENGGUNAKAN Arithmetic Operator :
+              
+             SELECT 10 + 10 as hasil;
+             
+             SELECT id< price DIV 100 as 'Price in K'
+             FROM products
+
+
+
+
+
+
+
+
+
+
+
