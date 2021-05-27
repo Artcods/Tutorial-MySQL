@@ -7,22 +7,14 @@
 - Kita juga bisa mengurutkan tidak hanya terhadap satu kolom, tapi beberapa kolom
       
       MENGURUTKAN DATA :
+      
+                  SELECT * FROM products
+                  ORDER BY category;
                   
                   SELECT * FROM products
                   ORDER BY price ASC, id DESC;
                   
+                  SELECT id, catagory, price, name FROM products
+                  ORDER BY category ASC, price DESC;
                   
-
-
-
-
-
-
-
-
-
-
-
-
-
 
