@@ -1,0 +1,16 @@
+# DATE DAN TIME FUNCTION
+
+- MySQL juga menyediakan banyak sekali function yang bisa kita gunakan untuk mengolah
+  data tipe Date dan Time
+- https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html
+
+      MENAMBAH KOLOM TIMESTAMP:
+                       
+               SELECT id, created_at
+                      EXTRACT(YEAR FROM created_at) AS 'Year'
+                      EXTRACT(MONTH FROM created_at) AS 'Month'
+               FROM products;
+               
+               SELECT id, created_at YEAR(created_at), MONTH(created_at)
+               FROM products;
+
