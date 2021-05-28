@@ -1,0 +1,47 @@
+# AUTO INCREMENT
+
+- Kadang kita butuh angka yang berurutan untuk membuat primary key, misal 1, 2, 3, dll
+- Untuk melakukan hal ini secara manual bukanlah hal bijak, apalagi jika aplikasi yang
+  kita buat diakses oleh banyak orang secara bersamaan
+- MySQL memiliki fitur yang bernama AUTO INCREMENT , fitur ini bisa kita gunakan untuk
+  menandai bahwa suatu primary key datanya diisi secara otomatis dari angka terakhir + 1
+- Dengan menggunakan AUTO INCREMENT, kita tidak perlu lalu memasukkan data primary key.
+  ini aka otomatis dibuat oleh MySQL
+  
+      MEMBUAT TABEL DENGAN ANTO INCREMENT :
+              
+              CREATE TABLE admin
+              ( 
+                id            INT NOT NULL AUTO_INCREMENT,
+                first_name    VARCHAR(100),
+                last_name     VARCHAR(100),
+                PRIMARY KEY (id)
+              ) ENGINE = InnoDB;
+
+
+      MEMASUKKAN DATA TANPA id :
+      
+               INSERT INTO admin (first_name, last_name) VALUES ('Udin', 'Bengenk')
+               INSERT INTO admin (first_name, last_name) VALUES ('Budi', 'Gaming')
+               INSERT INTO admin (first_name, last_name) VALUES ('Joko', 'Morro)
+
+          ATAU :
+              
+               INSERT INTO admin (first_name, last_name)
+               VALUES ('Udin', 'Bengenk'),
+                      ('Budi', 'Gaming'),
+                      ('Ais', 'Milo),
+                      
+       DELETE DATA :
+               
+               DELETE FROM admin WHERE id = 3;
+               
+       MELIHAT id Terakhir :
+               
+               SELECT LAST_INSERT_ID();
+               
+
+
+
+
+
