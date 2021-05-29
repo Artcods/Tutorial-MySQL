@@ -23,19 +23,19 @@
      MEMASUKKAN DATA KE TABEL :
      
              INSERT INTO products(id, name, price, quantity)
-             VALUES ('P0001', 'BUKU TULIS', 15000, 100);
+             VALUES ('P0001', 'Mie Yamin', 15000, 100);
              
              INSERT INTO products(id, name, description, price, quantity)
-             VALUES ('P0002', 'TEMPAT PENSIL', 'TEMPAT PENSIL + ALAT TULIS' 20000, 100);
+             VALUES ('P0002', 'Mie Ayam Bakso', 'Mie Ayam + Bakso' 20000, 100);
              
              
      MEMASUKKAN BEBERAPA DATA SEKALIGUS :
               
              
              INSERT INTO products(id, name, price, quantity)
-             VALUES ('P0003', 'BINDER', 20000, 100),
-                    ('P0004', 'PENSIL', 25000, 100),
-                    ('P0005', 'PULPEN', 15000, 100); 
+             VALUES ('P0003', 'Mie Ayam', 20000, 100),
+                    ('P0004', 'Mie Ayam Bakso', 25000, 100),
+                    ('P0005', 'Mie Ayam Komplit', 15000, 100); 
 
 
 
