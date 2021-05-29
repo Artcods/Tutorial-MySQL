@@ -5,3 +5,38 @@
 - Tapi ingat, fitur ini tidak se kompleks yang dimiliki bahasa pemrograman
 - https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html
 
+       MENGGUNAKAN Control Flow CASE :
+              
+              SELECT id, name,
+                    CASE category
+                          WHEN 'Makanan' THEN 'Enak'
+                          WHEN 'Minuman' THEN 'Segar'
+                          ELSE 'Apa Itu?!'
+                     END AS 'Category'
+              FROM products;
+
+        MENGGUNAKAN Control Flow IF
+              
+              SELECT id
+                     price,
+                     IF(price <= 15000, 'Murah'
+                     IF(price <= 20000, 'Mahal', 'Mahal Banget')) AS 'Mahal?'
+               FROM products;
+               
+               SELECT id
+                     price,
+                     IF(price <= 15000, 'Murah'
+                     IF(price <= 20000, 'Mahal', 'Mahal Banget'
+                     IF(price <= 50000, 'Mahal Banget'))) AS 'Mahal?'
+               FROM products;
+
+        
+        MENGGUNAKAN Control Flow IFNULL
+        
+               SELECT id, name, IFNULL(description, 'Kosong')
+               FROM products;
+
+
+
+
+
