@@ -3,5 +3,5 @@
 - MySQL memiliki fitur flow control function 
 - ini mirip IF ELSE di bahasa pemrograman
 - Tapi ingat, fitur ini tidak se kompleks yang dimiliki bahasa pemrograman
-
+- https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html
 
