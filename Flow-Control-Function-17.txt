@@ -1,0 +1,7 @@
+# FLOW CONTROL FUNCTION 
+
+- MySQL memiliki fitur flow control function 
+- ini mirip IF ELSE di bahasa pemrograman
+- Tapi ingat, fitur ini tidak se kompleks yang dimiliki bahasa pemrograman
+
+
