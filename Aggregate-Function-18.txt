@@ -13,5 +13,6 @@
             
             SELECT MIN(price) AS 'Harga Termurah' FROM products;
             
+            SELECT SUM(quantity) AS 'Total Stock' FROM products;
 
 
