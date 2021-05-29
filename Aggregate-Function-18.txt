@@ -1,0 +1,17 @@
+- MySQL mendukung function-function melakukan aggregate
+- Misal, kita ingin melihat harga paling mahal di tabel product, atau harga paling murah,
+  atau rata-rata harga product, atau total jumlah data di tabel, dan lain-lain
+- https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html
+
+      MENGGUNAKAN Aggregate Function :
+            
+            SELECT COUNT(id) AS 'Total Products' FROM products;
+            
+            SELECT AVG(price) AS 'Rata-Rata' FROM products;
+            
+            SELECT MAX(price) AS 'Harga Termahal' FROM products;
+            
+            SELECT MIN(price) AS 'Harga Termurah' FROM products;
+            
+
+
