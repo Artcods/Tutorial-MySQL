@@ -1,0 +1,45 @@
+# Masalah dengan LIKE operator
+
+- Kadang kita ingin mencari sebuah kata dalam tabel, dan biasanya kita akan menggunakan
+  LIKE operator
+- Operasi yang dilakukan LIKE operator adalah dengan cara mencari seluruh data di tabel 
+  dari baris pertama sampai terakhir, hal ini membuat operator LIKE sangat lambat
+- Menambah index di tabel juga tidak akan membantu, karena LIKE operator tidak menggunakan
+  index
+- MySQL menyediakan fitur FULL TEXT SEARCH juka ada kasus kita ingin melakukan hal ini
+
+# FULL TEXT SEARCH
+
+- Full Text Search memunngkinkan kita bisa sebagai kata di kolom dengan tipe data string
+- Ini sangat cocok ketika pada kasus kita memang membutuhkan pencarian yang tidak hanya
+  sekedar operasi = (equals, samadengan)
+- https://dev.mysql.com/doc/refman/8.0/en/fulltext-search.html
+
+      MEMBUAT TABEL DENGAN FULL-TEXT SEARCH :
+            
+            CREATE TABLE products
+            (
+                id            VARCHAR(10)   NOT NULL,
+                name          VARCHAR(100)  NOT NULL,
+                description   TEXT,
+                price         INT UNSIGNED  NOT NULL,
+                quantity      INT UNSIGNED  NOT NULL,
+                created_at    TIMESTAMP     NOT NULL DEFAULT 0,
+                PRIMARY KEY (id),
+                FULLTEXT product_search (name, description)
+            ) ENGINE = InnoDB
+
+       MENAMBAH/MENGHAPUS FULL-TEXT SEARCH
+            
+            ALTER TABLE products 
+              ADD FULLTEXT product_search (name, description)
+              
+            ALTER TABLE products
+              DROP INDEX product_search
+
+
+
+
+
+
+
