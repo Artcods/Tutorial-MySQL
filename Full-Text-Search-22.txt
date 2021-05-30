@@ -38,8 +38,43 @@
               DROP INDEX product_search
 
 
+# MODE FULL-TEXT SEARCH
 
+MySQL menyediakan beberapa mode untuk melakukan pencarian di Full-Text Search,
+kita bisa memilihnya sesuai kebutuhan kita
 
+- Natural Language, yaitu mencari seperti bahasa natural (per kata) : 
+  https://dev.mysql.com/doc/refman/8.0/en/fulltext-natural-language.html
+  
+- Boolean, yaitu mencari dengan kemampuan mengandung kata (+) atau tidak mengandung
+  kata (-) dan lain-lain : 
+  https://dev.mysql.com/doc/refman/8.0/en/fulltext-boolean.html 
+  
+- Query Expansion, yaitu mencari seperti natural language, namun melakukan dua kali 
+  pencarian, pencarian pertama menggunakan natural language, 
+  pencarian kedua melakukan pencarian dari kedekatan hasil pertama, 
+  misal kita mencari kata “bakso”, lalu ternyata di dalam “bakso” ada kata “mie”,
+  maka kemungkinan query kedua akan mencari kata “mie” juga : 
+  MySQL menyediakan beberapa mode untuk melakukan pencarian di Full-Text Search,
+  kita bisa memilihnya sesuai kebutuhan kita
+  https://dev.mysql.com/doc/refman/8.0/en/fulltext-query-expansion.html 
+        
+        MENCARI DENGAN NATURAL LANGUAGE MODE :
+              
+              SELECT * FROM products
+              WHERE MATCH(name, description)
+                    AGAINST('ayam' IN NATURAL LANGUAGE MODE);
 
+        
+        MENCARI DENGAN BOOLEAN MODE :
+              
+              SELECT * FROM products
+              WHERE MATCH (name, description)
+                    AGAINST('+Mie -bakso' IN BOOLEAN MODE);
 
+        MENCARI DENGAN QUERY EXPANSION MODE
+              
+              SELECT * FROM products
+              WHERE MATCH (name, description)
+                    AGAINST('Bakso' WITH QUERY EXPANSION)
 
