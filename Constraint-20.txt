@@ -1,0 +1,84 @@
+# Constraint
+
+- Di MySQL, kita bisa menambahkan constraint untuk menjaga data di tabel tetap baik
+- Constraint sangat bagus ditambahkan untuk menjaga terjadi validasi yang salah 
+  di program kita, sehingga data yang masuk ke database tetap akan terjaga
+
+
+# Unique Constraint
+
+- Unique constraint adalah constraint yang memastikan bahwa data kita tetap unique
+- Jika kita mencoba memasukkan data yang duplikat, maka MySQL akan 
+  menolak data tersebut
+        
+        MEMBUAT TABLE DENGAN UNIQUE CONSTRAINT :
+        
+                CREATE TABLE customers
+                (   
+                    id            INT          NOT NULL AUTO_INCREMENT,
+                    email         VARCHAR(100) NOT NULL,
+                    first_name    VARCHAR(100),
+                    last_name     VARCHAR(100),
+                    PRIMARY KEY (id),
+                    UNIQUE KEY email_unique (email)
+                ) ENGINE = InnoDB
+
+
+         MENAMBAH/MENGHAPUS UNIQUE CONSTRAINT
+                 
+                ALTER TABLE customers
+                     ADD CONSTRAINT email_unique UNIQUE (email);
+                     
+                ALTER TABLE customers 
+                     DROP CONSTRAINT email_unique;
+               
+         MEMBUAT DATA :
+                
+                INSERT INTO costumers(email, first_name, last_name)
+                VALUES ('admin@user.com', admin, user)
+                
+                
+                
+# CHECK CONSTRAINT
+
+- Check constraint adalah constraint yang bisa kita tambahkan kondisi pengecekannya
+- Ini cocok untuk mengecek data sebelum dimasukkan ke dalam database
+- Misal kita ingin memastikan bahwa harga harus diatas 1000 misal
+- Maka kita bisa menggunakan check constraint
+
+        MEMBUAT TABEL DENGAN CHECK CONSTRAINT :
+                
+                CREATE TABLE products
+                (
+                    id            VARCHAR(10) NOT NULL,
+                    name          VARCHAR(100) NOT NULL,
+                    description   TEXT,
+                    price         INT UNSIGNED NOT NULL,
+                    quantity      INT UNSIGNED NOT NULL DEFAULT 0,
+                    created_at    TIMESTAMP    NOT NULL DEFAULT CURREN_TIMESTAMP,
+                    PRIMARY KEY   (id),
+                    CONSTRAINT price_check CHECK ( price >= 1000 )
+                )
+                
+          MENAMBAH/MENGHAPUS CHECK CONSTRAINT
+          
+                ALTER TABLE products
+                    ADD CONSTRAINT price_check CHECK ( CHECK >= 1000 );
+                    
+                ALTER TABLE products
+                    ADD CONSTRAINT price_check CHECK ( CHECK >= 1000 AND price <= 1000000);                    
+                   
+                ALTER TABLE products 
+                    DROP CONSTRAINT price_check;
+          
+          MENGUPDATE products :
+                
+                UPDATE products 
+                SET price = 1000
+                WHERE id = 'P0006'
+         
+         
+                     
+
+
+
