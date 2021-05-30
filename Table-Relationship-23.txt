@@ -1,0 +1,60 @@
+# Table Relationship
+
+- Dalam Relation DBMS, salah satu fitur andalan nya adalah table relationship, yaitu
+  relasi antar tabel.
+- Kita bisa melakukan relasi dari satu tabel ke tabel lain.
+- Dalam kehidupan nyata pun pasti kita sering membuat relasi antar tabel
+- Misal, saat kita membuat aplikasi penjualan, di laporan penjualan pasti ada data
+  barang. Jika di tabel artinya tabel penjualan akan berelasi dengan tabel barang 
+- Misal dalam aplikasi kampus, tabel mahasiswa akan berelasi dengan tabel mata kuliah,
+  dan tabel dosen 
+- Dan lain-lain
+
+# Foreign Key
+
+- Saat membuat relasi tabel, biasanya kita akan membuat sebuah kolom sebagai referensi ke tabel
+  lainnya
+- Misal saat kita membuat tabel penjualan, di dalam tabel penjualan, kita akan menambahkan 
+  kolom id_produk sebagai referensi ke tabel produk, yang berisi PRIMARY KEY di tabel produk
+- kolom referensi ini MySQL dinamakan Foreign Key
+- Kita bisa menambah satu-satu lebih Foreign Key ke dalam sebuah tabel
+- Membuat Foreign Key sama seperti membuat kolom, biasanya hanya saja kita perlu memberi tahu
+  MySQL bahwa itu adalah Foreign Key ke tabel lain
+
+      MEMBUAT TABEL DENGAN FOREIGN KEY :
+            
+              CREATE TABLE wishlist
+              (
+                  id            INT NOT     NULL AUTO_INCREMENT,
+                  id_product    VARCHAR(10) NOT NULL,
+                  description   TEXT,
+                  PRIMARY KEY (id),
+                  CONSTRAINT fk_wishlist_product
+                      FOREIGN KEY (id_product) REFERENCES products (id)
+              ) ENGINE = InnoDB
+
+       MENAMBAH/MENGHAPUS FOREIGN KEY :
+              
+              ALTER TABLE wishlist
+                DROP CONSTRAINT fk_wishlist_product;
+                
+              ALTER TABLE wishlist 
+                ADD CONSTRAINT fk_wishlist_product
+                   FOREIGN KEY (id_product) REFERENCES products (id);
+
+
+# KEUNTUNGAN MENGGUNAKAN FOREIGN KEY
+
+- FOREIGN KEY memastikan bahwa data yang kita masukkan ke kolom tersebut harus tersedia
+  references nya
+- Selain itu saat kita menghapus data di tabel reference, MySQL akan mengecek apakah id nya
+  digunakan di FOREIGN KEY di tabel lain, jika digunakan, maka secara otomatis MySQL akan
+  menolak proses delete data di tabel reference tersebut
+
+
+
+
+
+
+
+
