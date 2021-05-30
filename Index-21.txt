@@ -1,0 +1,99 @@
+# INDEX
+
+- Secara default, MySQL akan menyimpan data di dalam disk seperti tabel biasanya.
+- Hal ini menyebabkan, ketika kita mencari data, maka MySQL akan melakukan pencarian
+  dari baris pertama sampai terakhir, yang artinya semakin banyak datanya, maka akan
+  semakin lambat proses pencarian datanya
+- Saat kita membuat index, MySQL akan menyimpan data dalam struktur data B-Tree :
+  https://en.wikipedia.org/wiki/B-tree'
+- Tidak hanya akan mempermudah kita saat melakukan pencarian, index juga akan mempermudah
+  kita ketika melakukan pengurutan menggunakan ORDER-BY
+- https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html
+
+
+# CARA KERJA INDEX
+
+- Kita bisa membuat lebih dari satu index di tabel, dan setiap kita membuat index, kita
+  membuat index untuk beberapa kolom sekaligus
+- Misal kita membuat index
+- (col1, col2, col3)
+- Artinya kita punya kemampuan untuk mencari lebih menggunakan index untuk kombinasi query
+  di (col1), (col2, col2) dan (col1, col2, col3)
+
+
+# EFEK SAMPING MEMBUAT INDEX
+
+- Index mungkin akan mempercepat untuk proses pencarian dan query data
+- Namun, saat kita membuat index, artinya MySQL akan melakukan proses update data di index
+  tiap kali kita menambah, mengubah, atau menghapus data di tabel
+- Artinya index membuat proses pencarian dan query lebih cepat, tapi memperlambat proses
+  manipulasi data
+- oleh karena itu, kita harus bijak saat membuat index
+
+
+# TIDAK PERLU INDEX
+
+- Saat kita membuat PRIMARY KEY dan UNIQUE constraint, kita tidak perlu menambahkan lagi
+  index
+- Hal ini dikarenakan MySQL secara otomatis akan menambahkan index pada kolom PRIMARY KEY 
+  dan UNIQUE constraint
+  
+      MEMBUAT TABLE DENGAN INDEX :
+             
+             CREATE TABLE sellers
+             (
+                id      INT          NOT NULL AUTO_INCREMENT,
+                name    VARCHAR(100) NOT NULL,
+                email   VARCHAR(100) NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE KEY email_unique (email),
+                INDEX name_index (name)
+             ) ENGINE = InnoDB
+             
+           ATAU :
+              
+             CREATE TABLE sellers
+             (
+                id      INT           NOT NULL AUTO_INCREMENT,
+                name    VARCHAR(100)  NOT NULL,
+                name2   VARCHAR(100)  ,
+                name3   VARCHAR(100)  ,
+                email   VARCHAR(100)  NOT NULL,
+                PRIMARY KEY (id),
+                UNIQUE KEY email_unique (email),
+                INDEX name_index (name)
+                INDEX name2_index (name2)
+                INDEX name3_index (name3)
+                INDEX name1_name2_name3_index (name, name2, name3) 
+             ) ENGINE = InnoDB
+             
+       MEMANGGIL DENGAN Index :
+             
+             SELECT * FROM products
+             WHERE name = 'P0007';
+
+             SELECT * FROM products'
+             WHERE name = 'P002' AND name2 = 'P008';
+
+             SELECT * FROM products'
+             WHERE name = 'P002' AND name2 = 'P008' AND name3 = 'P005';
+
+       MENAMBAH/MENGHAPUS INDEX :
+             
+             ALTER TABLE sellers 
+             ADD INDEX name_index (name);
+             
+             ALTER TABLE sellers
+             DROP INDEX name_index;
+
+
+
+
+
+
+
+
+
+
+
+
