@@ -45,16 +45,57 @@
 
 # KEUNTUNGAN MENGGUNAKAN FOREIGN KEY
 
-- FOREIGN KEY memastikan bahwa data yang kita masukkan ke kolom tersebut harus tersedia
-  references nya
-- Selain itu saat kita menghapus data di tabel reference, MySQL akan mengecek apakah id nya
-  digunakan di FOREIGN KEY di tabel lain, jika digunakan, maka secara otomatis MySQL akan
-  menolak proses delete data di tabel reference tersebut
+- FOREIGN KEY memastikan bahwa data yang kita masukkan ke kolom tersebut 
+  harus tersedia references nya
+- Selain itu saat kita menghapus data di tabel reference, MySQL akan mengecek 
+  apakah id nya digunakan di FOREIGN KEY di tabel lain, jika digunakan, maka 
+  secara otomatis MySQL akan menolak proses delete data di tabel reference tersebut
 
 
+# KETIKA MENGHAPUS DATA BERELASI
 
+- Seperti yang sebelumnya dibahas, ketika menghapus data yang berelasi, maka secara
+  otomatis MySQL akan menolok operasi delete tersebut
+- Kita bisa mengubah fitur ini jika kita mau, ada banyak hal yang bisa kita lakukan
+  ketika data berelasi dihapus, default nya memang akan ditolak (RESTRICT)
+  RESTRICT = Tidak Boleh Di DELETE ---> Akan Di TOLAK
 
+      MEMASUKKAN DATA KE DALAM wishlist :
+      
+          INSERT INTO (id_product, description)
+          VALUES ('P0001', 'Barang Favorite')
 
+          INSERT INTO (id_product, description)
+          VALUES ('idsalah', 'Barang Favorite')  <---- Jika id yang dimasukan salah,
+                                                       berarti karena tidak ada di 
+                                                       tabel product
+  
+      MENGHAPUS DATA DI products :
+          
+          DELETE FROM products
+          WHERE id = 'P0001'    <---- Ini akan ERROR, karena ada tabel yang 
+                                      meng-Reference ke tabel products
+          
+ 
+ Behavior Foreign Key :
+ 
+      ---------------------------------------------------------------
+      |  BEHAVIOR  |      ON DELETE      |         ON UPDATE        |
+      ---------------------------------------------------------------
+      | RESTRICT   | Ditolak             | Ditolak                  |  
+      | CASCADE    | Data akan dihapus   | Data akan ikut diubah    |
+      | NO ACTION  | Data dibiarkan      | Data dibiarkan           |
+      | SET NULL   | Diubah jadi NULL    | Diubah jadi NULL         |
+      ---------------------------------------------------------------        
+      
+      MENGUBAH BEHAVIOR MENGHAPUS RELASI :
+              
+              ALTER TABLE wishlist :
+                 ADD CONSTRAINT fk_wishlist_product
+                    FOREIGN KEY (id_product) REFERENCES products (id)
+                      ON DELETE CASCADE ON UPDATE CASCADE;
+          
+          
 
 
 
