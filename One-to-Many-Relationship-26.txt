@@ -1,0 +1,49 @@
+# One to Many Relationship
+
+- One to Many relationship adalah relasi antar tabel dimana data bisa digunakan lebih
+  dari satu kali di tabel relasinya
+- Berbeda dengan one to one yang cuma bisa digunakan maksimal 1 kali di tabel relasinya,
+  one to many tidak ada batasan berapa banyak data digunakan 
+- Contoh relasi antar tabel categories dan products, dimana satu category bisa digunakan 
+  oleh lebih dari satu products, yang artinya relasinya one category to many products
+- Pembuatan relasi one to many sebenernya sama dengan one to one, yang membedakan adalah,
+  kita tidak perlu menggunakan UNIQUE KEY, karena datanya memang bisa berkali-kali
+  ditambahkan  di tabel relasinya.
+
+      DIAGRAM ONE TO MANY RELATIONSHIP :
+        
+           ---------------------     
+           |   Tabel Category  |
+           |-------------------| 1
+           | id    VARCHAR     |----------|
+           | name  VARCHAR     |          |             -------------------------
+           ---------------------          |             |      Tabel Product    |
+                                          |           n |-----------------------|
+                                          ------------- | id            VARCHAR |
+                                                        | id_category   VARCHAR |                                    
+                                                        | name          VARCHAR |
+                                                        -------------------------
+
+       MEMBUAT TABLE CATEGORY 
+            
+           CREATE TABLE categories 
+           (
+              id             VARCHAR(10)   NOT NULL,
+              name           VARCHAR(100)  NOT NULL,
+              PRIMARY KEY (id)
+           ) ENGINE = InnoDB;
+
+        MENGUBAH TABEL PRODUCT
+           
+           ALTER TABLE products
+              DROP COLUMN category;
+              
+           ALTER TABLE products
+              ADD COLUMN id_category VARCHAR(10);
+              
+           ALTER TABLE products
+              ADD CONSTRAINT fk_products_category
+                FOREIGN KEY (id_category) REFERENNCE category (id);
+        
+
+
