@@ -1,0 +1,32 @@
+# JENIS-JENIS RELASI TABEL
+
+- Sekarang kita sudah tau untuk melakukan relasi antar tabel, kita bisa menggunakan
+  FOREIGN KEY
+- Dan untuk melakukan SELECT beberapa tabel, kita bisa menggunakan JOIN
+- Dalam konsep relasi, ada banyak jenis-jenis relasi antar tabel
+- Sekarang kita akan bahas dari yang pertama yaitu One to One relationship
+
+# One to One Relationship 
+
+- One to One Relationship adalah relasi tabel yang paling sederhana
+- Artinya tiap data sebuah tabel hanya boleh berelasi ke maksimal 1 data di tabel
+  lainnya
+- Tidak boleh ada relasi lebih dari 1 data
+- Contoh misal, kita membuat aplikasi toko online yang terdapat fitur wallet, dan 1
+  customer, cuma boleh punya 1 wallet
+
+      Diagram One to One Relationship :
+      
+          -------------------------                       ---------------------
+          |     Tabel Customer    |                       |    Tabel Wallet   |    
+          ------------------------- 1                     ---------------------
+          | id           INT      |----------|            | id           INT  |  
+          | email        VARCHAR  |          |          1 | id_customer  INT  |
+          | first_name   VARCHAR  |          |------------| balance      INT  |
+          | last_name    VARCHAR  |                       |                   |  
+          -------------------------                       ---------------------        
+
+
+
+
+
