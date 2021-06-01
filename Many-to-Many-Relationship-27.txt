@@ -15,8 +15,79 @@
            ---------------------               ------------------------     
            |   Tabel Product   |               |     Tabel Order      |
            |-------------------|               |----------------------|
-           | id        VARCHAR |               | id          INT      |
+           | id        VARCHAR | n           n | id          INT      |
            | name      VARCHAR |---------------| order_int   DATETIME |
            | price     INT     |               | ...                  |
-           | quantity  INT     |               | ...                  |
-           ---------------------               ------------------------ 
+           | quantity  INT     |               |                      |
+           | ...               |               ------------------------ 
+           ---------------------
+           
+# Bagaimana Implementasi Many to Many?
+
+- Sekarang pertanyaanya, bagaimana implementasi Many to Many?
+- Apakah kita harus menambahkan id_order di tabel products? atau id_product di
+  tabel orders
+
+
+# Id Product di tabel Order
+
+- Jika kita menambahkan id_product di table orders, artinya sekarang sudah benar, 
+  bahwa 1 product bisa berkali-kali
+- Namun masalahnya adalah, berarti 1 order hanya bisa membeli 1 product, karena
+  cuma ada 1 kolom untuk id_product
+- Oke kalo gitu kita bisa menambahkan id_product1, id_product2, dan seterusnya.
+  Solusi ini bisa dilakukan, tapi tidak baik, artinya akan selalu ada maksimal
+  barang yang bisa kita beli dalam satu order
+
+
+# Id Order di Tabel Product
+
+- Jika kita tambahkan id_order di table products, artinya sekarang 1 order bisa 
+  membeli lebih dari 1 product, oke sudah benar
+- Tapi sayangnya masalahnya terbalik sekarang, 1 product cuma bisa dijual satu
+  kali, tidak bisa dijual berkali-kali, karena kolom id_order nya cuma 1
+- Kalaupun kita tambah id_order1, id_order2 dan seterusnya di table product, tetap 
+  ada batasan maksimal nya
+- Lantai bagaimana solusinya untuk relasi many to many
+
+
+# MEMBUAT TABLE RELASI
+
+- Solusi yang biasa dilakukan jika terjadi relasi many to many adalah, biasanya 
+  kita akan menambah 1 tabel ditengahnya
+- Tabel ini bertugas sebagai jembatan untuk menggabungkan relasi many to many
+- Isi table ini akan ada id dari table pertama dan table kedua, dalam kasus 
+  ini adalah id_product dan id_order
+- Dengan demikian, kita bisa menambahkan beberapa data ke dalam tabel relasi ini,
+  sehingga berarti satu product bisa dijual beberapa kali di dalam table order, 
+  dan satu order bisa membeli lebih dari satu product
+
+      DIAGRAM Many to Many Relationship :
+            
+            ---------------------            -------------------------                 -------------------------
+            |   Tabel Product   |            |   Tabel Order Detail  |                 |      Tabel Order      |
+            |-------------------|            |-----------------------| n               |-----------------------|
+            | id        VARCHAR | 1        n | id_product            |--------|        | id           INT      |
+            | name      VARCHAR |------------| id_order              |        |      1 | total        INT      |
+            | price     INT     |            | quantity              |        |--------| order_date   DATETIME |
+            | quantity  INT     |            | price                 |                 | ...                   |
+            | ...               |            |                       |                 |                       |
+            ---------------------            -------------------------                 -------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
