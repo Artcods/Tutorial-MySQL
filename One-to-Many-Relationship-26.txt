@@ -45,5 +45,30 @@
               ADD CONSTRAINT fk_products_category
                 FOREIGN KEY (id_category) REFERENNCE category (id);
         
-
+        
+        UPDATE categories :
+            
+            INSERT INTO categories (id, name)
+            VALUES ('C0001', 'Makanan'),
+	                 ('C0002', 'Minuman'),
+                   ('C0003', 'Dan Lain-lain');
+            
+            UPDATE products 
+            SET id_category = 'C0001'
+            WHERE id IN ('P0001', 'P0002', 'P0003', 'P0004', 'P0005')
+        
+            UPDATE products 
+            SET id_category = 'C0001'
+            WHERE id IN ('P0006', 'P0007', 'P0008', 'P0009', 'P0010', 'P0011')
+            
+        Query MENGGUNAKAN JOIN :
+            
+            SELECT products.id, products.name, products.name
+            FROM products
+            JOIN categories ON (categories.id = products.id_category);
+            
+            
+            
+            
+            
 
