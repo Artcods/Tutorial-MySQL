@@ -1,0 +1,22 @@
+# Many to Many Relationship
+
+- Many to Many adalah table relationship yang paling kompleks, dan kadang membingungkan
+  untuk pemula
+- Many to Many adalah relasi dimana ada relasi antara 2 tabel dimana table pertama bisa
+  punya banyak relasi di tabel kedua, dan table kedua pun punya banyak relasi di tabel
+  pertama
+- ini memang sedikit membingungkan, bagaimana caranya bisa relasi kebanyakan secara
+  bolak balik, sedangkan di label kita cuma punya 1 kolom?
+- Contoh relasi Many to Many adalah relasi antara produk dan penjualan, dimana setiap
+  produk bisa dijual berkali-kali, dan setiap penjualan bisa untuk lebih dari satu produk
+
+      DIAGRAM Many to Many Relationship
+      
+           ---------------------               ------------------------     
+           |   Tabel Product   |               |     Tabel Order      |
+           |-------------------|               |----------------------|
+           | id        VARCHAR |               | id          INT      |
+           | name      VARCHAR |---------------| order_int   DATETIME |
+           | price     INT     |               | ...                  |
+           | quantity  INT     |               | ...                  |
+           ---------------------               ------------------------ 
