@@ -1,0 +1,42 @@
+Jenis-Jenis Join
+
+  Sebelum kita sudah bahas tentang join table, tapi sebenernya ada banyak sekali 
+Jenis-Jenis JOIN table di MySQL, diantaranya :
+
+- INNER JOIN
+
+- LEFT JOIN
+
+- RIGHT JOIN
+
+- CROSS JOIN
+
+
+# INNER JOIN 
+
+- INNER JOIN adalah mekanisme JOiN, dimana terdapat relasi antara table pertama dari
+  table kedua
+- Jika ada data di table pertama yang tidak memiliki relasi di table kedua ataupun
+  sebaiknya, maka hasil INNER JOIN di MySQL
+- Ini adalah default JOIN di MySQL
+- Jika kita menggunakan JOIN seperti yang sudah kita praktekkan sebelumnya, sebenarnya'
+  itu akan melakukan INNER JOIN
+
+      MELAKUKAN INNER JOIN
+          
+          SELECT * FROM categories
+          INNER JOIN products ON (products.id_category = categories.id)
+          
+
+
+# LEFT JOIN
+
+- LEFT JOIN adalah mekanisme JOIN seperti INNER JOIN, namun semua data di table pertama
+  akan diambil juga
+- Jika ada yang tidak memiliki relasi di table kedua, maka hasilnya akan NULL
+
+
+
+
+
+
