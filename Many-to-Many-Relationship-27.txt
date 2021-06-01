@@ -74,20 +74,76 @@
             | ...               |            |                       |                 |                       |
             ---------------------            -------------------------                 -------------------------
 
+      
+      MEMBUAT TABLE ORDER :
+          
+          CREATE TABLE orders
+          (
+              id            INT      NOT NULL AUTO_INCREMENT,
+              total         INT      NOT NULL,
+              order_date    DATETIME NOT NULL CURRENT_TIMESTAMP,
+              PRIMARY KEY (id)
+          ) ENGINE = InnoDB;
+
+       MEMBUAT TABLE ORDER DETAIL
+       
+           CREATE TABLE orders_detail
+           (
+              id_product  VARCHAR(10) NOT NULL,
+              id_order    INT         NOT NULL,
+              price       INT         NOT NULL,
+              quantity    INT         NOT NULL,
+              PRIMARY KEY (id_product, id_order)
+           ) ENGINE = InnoDB;
+
+        MEMBUAT FOREIGN KEY
+           
+           ALTER TABLE orders_detail
+              ADD CONSTRAINT fk_orders_detail_product
+                 FOREIGN KEY (id_product) REFERENCES product (id);
+                 
+           ALTER TABLE orders_detail
+              ADD CONSTRAINT fk_orders_detail_order
+                 FOREIGN KEY (id_order) REFERENCES order (id);
+
+        INSERT orders :
+            
+           INSERT INTO orders(total)
+           VALUES (50000);
 
 
+        INSERT orders_detail :
+           
+           INSERT INTO orders_detail (id_product, id_order, price, quantity)
+           VALUES ('P0001', 1, 15000, 1)
+                  ('P0003', 2, 20000, 1)
+
+           INSERT INTO orders_detail (id_product, id_order, price, quantity)
+           VALUES ('P0006', 3, 8000, 1)
+                  ('P0008', 4, 8000, 1)
 
 
+           INSERT INTO orders_detail (id_product, id_order, price, quantity)
+           VALUES ('P0006', 5, 8000, 1)
+                  ('P0008', 6, 8000, 1)
 
-
-
-
-
-
-
-
-
-
-
-
-
+        MELIHAT DATA Order, Detail, dan Product-nya :
+           
+           SELECT * FROM orders
+              JOIN orders_detail ON (orders_detail.id_order = orders.id)
+              JOIN products ON (products.id = orders_detail.id_product);
+        
+           SELECT orders.id, 
+                  products.id, 
+                  products.name, 
+                  orders_detail.quantity,
+                  orders_detail.price
+           FROM orders
+              JOIN orders_detail ON (orders_detail.id_order = orders.id)
+              JOIN products ON (products.id = orders_detail.id_product);
+        
+        
+        
+        
+        
+        
