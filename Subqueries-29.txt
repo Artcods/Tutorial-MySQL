@@ -1,0 +1,18 @@
+# Subquery di WHERE
+
+- MySQL mendukung pencarian data menggunakan WHERE dari hasil SELECT query
+- Fitur ini dinamakan Subquery 
+- Contoh, kita ingin mencari products yang harganya diatas harga rata-rata, 
+  artinya kita akan melakukan SELECT dengan WHERE price > harga rata, dimana harga
+  rata-rata perlu kita hitung menggunakan query SELECT lainnya menggunakan 
+  Aggregate Function AVG
+
+
+
+
+
+
+
+
+
+
