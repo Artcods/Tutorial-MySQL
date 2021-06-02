@@ -25,18 +25,28 @@ Jenis-Jenis JOIN table di MySQL, diantaranya :
       MELAKUKAN INNER JOIN
           
           SELECT * FROM categories
-          INNER JOIN products ON (products.id_category = categories.id)
+          INNER JOIN products ON (products.id_category = categories.id);
           
 
 
 # LEFT JOIN
 
-- LEFT JOIN adalah mekanisme JOIN seperti INNER JOIN, namun semua data di table pertama
+- LEFT JOIN adalah mekanisme JOIN seperti INNER JOIN, namun semua data di 
+  table pertama
   akan diambil juga
 - Jika ada yang tidak memiliki relasi di table kedua, maka hasilnya akan NULL
 
+      MELAKUKAN LEFT JOIN :
+            
+            SELECT * FROM categories
+            LEFT JOIN products ON (products.id_category = categories.id);
 
 
+# RIGHT JOIN
+
+- RIGHT JOIN adalah mekanisme JOIN seperti INNER JOIN, namun semua data di table
+  kedua akan diambil juga
+- Jika ada yang tidak memiliki relasi di table pertama, maka hasilnya akan NULL
 
 
 
