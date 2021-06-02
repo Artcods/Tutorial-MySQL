@@ -7,10 +7,24 @@
   rata-rata perlu kita hitung menggunakan query SELECT lainnya menggunakan 
   Aggregate Function AVG
 
+      MELAKUKAN Subquery di WHERE Clause :
+            
+            SELECT * FROM products
+            WHERE price > (SELECT AVG(price) FROM products);
 
+# Subquery di FROM
 
+- Selain di WHERE clause. Subquery juga bisa dilakukan di FROM clause
+- Misal kita ingin mencari data dari hasil query SELECT, itu bisa kita lakukan di
+  MySQL
 
-
+      MELAKUKAN Subquery di FROM Clause
+             
+             SELECT MAX(price)
+             FROM (SELECT price
+                   FROM categories
+                        INNER JOIN products
+                                    ON (products.id_category = categories.id)) AS cp;
 
 
 
