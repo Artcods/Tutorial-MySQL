@@ -1,0 +1,104 @@
+# SET OPERATOR
+
+- MySQL mendukung operator Set, dimana ini adalah operasi antara hasil dari dua 
+  SELECT query. Ada banyak jenis operator Set, yaitu :
+  
+  - UNION
+  
+  - UNION ALL
+  
+  - INTERSCT, dan
+  
+  - MINUS
+
+      MEMBUAT TABLE Guest Book :
+         
+         CREATE TABLE guestbooks
+         (
+            id      INT           NOT NULL AUTO_INCREMENT
+            email   VARCHAR(100)  NOT NULL,
+            title   VARCHAR(200)  NOT NULL,
+            content TEXT,
+            PRIMARY KEY (id)
+         ) ENGINE = InnoDB
+         
+         INSERT INTO guestbook (email, title, content)
+         VALUES ('questbook@gmail.com', 'Hello', 'Hello')
+                ('questbook@gmail.com', 'Hello', 'Hello'),
+                ('questbook@gmail.com', 'Hello', 'Hello'),
+                ('admin@gmail.com', 'Hello', 'Hello'),
+                ('admin@gmail.com', 'Hello', 'Hello')
+                ('admin@gmail.com', 'Hello', 'Hello');
+
+# UNION 
+
+- UNION adalah operasi menggabungkan dua buah SELECT query, dimana jika terdapat data
+  yang duplikat, data duplikatnya akan dihapus dari hasil query
+  
+      MELAKUKAN Query UNION :
+           
+           SELECT DISTINCT email customers
+           UNION 
+           SELECT DISTINCT email FROM guestbooks;
+
+# UNION ALL
+
+- UNION ALL adalah operasi yang sama dengan UNION, namun data duplikat tetap akan
+  ditampilkan di hasil query nya
+  
+       MELAKUKAN Query UNION ALL :
+            
+            SELECT DISTINCT email FROM customers
+            UNION ALL
+            SELECT DISTINCT email FROM guestbooks;
+            
+            
+            SELECT email, COUNT(email)
+            FROM (SELECT DISTINCT email FROM customers
+                  UNION ALL 
+                  SELECT DISTINCT email FROM guestbooks) AS emails
+            GROUP BY email;
+
+
+# INTERSECT
+
+- INTERSECT adalah operasi menggabungkan dua query, namun yang diambil hanya data
+  yang terdapat pada hasil query pertama dan query kedua 
+- Data yang tidak hanya ada di salah satu query, akan dihapus di hasil operasi
+  INTERSECT
+- Data nya muncul tidak dalam keadaan duplikat 
+- Sayangnya, MySQL tidak memiliki operator INTERSECT, dengan demikian untuk 
+  melakukan operasi INTERSECT, kita harus lakukan secara manual menggunakan JOIN
+  atau SUBQUERY
+
+       MELAKUKAN Query INTERSECT :
+              
+              SELECT DISTINCT email FROM customers
+              WHERE email IN (SELECT DISTINCT email FROM guestbooks);  
+                                              ^
+                                              |
+                                              |
+                                           Subquery
+              
+              SELECT DISTINCT customers.email FROM customers
+              INNER JOIN guestbooks ON (guestbooks.email = customers.email);
+
+# MINUS 
+
+- MINUS adalah operasi dimana query pertama akan dihilangkan oleh query kedua
+- Artinya jika ada data di query pertama yang sama dengan data yang ada di query kedua,
+  maka data tersebut akan dihapus dari hasil query MINUS
+- Sayangnya, di MySQL juga tidak ada operator MINUS, namun hal ini bisa kita lakukan
+  menggunakan JOIN
+        
+        
+
+
+
+
+
+
+
+
+
+
