@@ -48,5 +48,48 @@ Jenis-Jenis JOIN table di MySQL, diantaranya :
   kedua akan diambil juga
 - Jika ada yang tidak memiliki relasi di table pertama, maka hasilnya akan NULL
 
+      MELAKUKAN RIGHT JOIN :
+            
+            SELECT * FROM categories
+            RIGHT JOIN products ON (products.id_category = categories.id)
+
+# CROSS JOIN
+
+- CROSS JOIN adalah salah satu JOIN yang sangat jarang sekali digunakan
+- CROSS JOIN adalah melakukan join dengan cara mengkalikan data di table pertama
+  dengan data di table kedua
+- Artinya jika ada 5 data di tabel pertama, dan 5 data di table kedua akan 
+  menghasilkan 25 kombinasi data (5 x 5)
+- Sekali lagi perlu di ingat, ini adalah JOIN yang sangay jarang sekali digunakan
+
+      MENGGUNAKAN CROSS :
+            
+             SELECT * FROM categories
+             CROSS JOIN products;
+
+
+# MEMBUAT TABLE PERKALIAN
+
+    CREATE TABLE numbers
+    (
+        id  INT NOT NULL,
+        PRIMARY KEY (id)
+    ) ENGINE = InnoDB;
+    
+    INSERT TABEL :
+        
+        INSERT INTO numbers 
+        VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10)
+        
+     MENGGUNAKAN CROSS JOIN :
+        
+        SELECT numbers1.id, numbers2.id, (numbers1.id * numbers2.id)
+        FROM numbers AS numbers1
+             CROSS JOIN numbers AS numbers2
+        ORDER BY numbers1.id, numbers2.id;
+ 
+
+
+
 
 
