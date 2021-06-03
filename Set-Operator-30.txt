@@ -86,14 +86,19 @@
 # MINUS 
 
 - MINUS adalah operasi dimana query pertama akan dihilangkan oleh query kedua
-- Artinya jika ada data di query pertama yang sama dengan data yang ada di query kedua,
+- Artinya jika ada data di query pertama yang sama dengan data yang ada di 
+  query kedua,
   maka data tersebut akan dihapus dari hasil query MINUS
-- Sayangnya, di MySQL juga tidak ada operator MINUS, namun hal ini bisa kita lakukan
-  menggunakan JOIN
+- Sayangnya, di MySQL juga tidak ada operator MINUS, namun hal ini bisa 
+  kita lakukan menggunakan JOIN
         
-        
+        MELAKUKAN Query MINUS :
+              
+               SELECT DISTINCT customers.email, guestbooks.email FROM customers
+               LEFT JOIN guestbooks ON (guestbooks.email = customers.email)
+               WHERE guestbooks.email IS NULL;
 
-
+              - Nampilkan Tabel yang tidak ada di guestbooks
 
 
 
