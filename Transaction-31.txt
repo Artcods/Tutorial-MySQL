@@ -14,10 +14,44 @@ Kenapa butuh Transaction?
 - Jika terjadi kesalahan di salah satu perintah, harapannya adalah perintah-perintah
   sebelumnya dibatalkan, agar data tetap konsisten
 
+# Database TRANSACTION
 
+- Database transaction adalah fitur di DBMS dimana kita bisa memungkinan beberapa 
+  perintah dianggap menjadi sebuah kesatuan perintah yang kita sebut transaction
+- Jika terdapat satu saja proses gagal di transaction, maka secara otomatis
+  perintah-perintah sebelumnya akan dibatalkan 
+- Jika sebuah transaction sukses, maka semua perintah akan dipastikan sukses
 
-
-
-
-
-
+    MEMBUAT TRANSACTION :
+        
+      |-------------|
+      | START       |
+      | TRANSACTION |
+      |-------------|
+             |            
+             |        |----------|     |----------|     |--------------|
+             |--------|  INSERT  |-----|  INSERT  |-----|   UPDATE...  |
+                      |   ...    |     |   ...    |     |              |-------|
+                      |----------|     |----------|     |--------------|       |
+                                                                               |
+                                                                               |
+                                                               |---------------|
+                                                               |
+                                                               |
+                                                        |---------------|
+                                                        |  COMMIT       |
+                                                        |  TRANSACTION  |
+                                                        |---------------|          
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
+                                                        
