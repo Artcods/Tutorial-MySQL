@@ -43,7 +43,76 @@ Kenapa butuh Transaction?
                                                         |  TRANSACTION  |
                                                         |---------------|          
                                                         
-                                                        
+     MEMBATALKAN TRANSACTION :
+
+      |-------------|
+      | START       |
+      | TRANSACTION |
+      |-------------|
+             |            
+             |        |----------|     |----------|     |--------------|
+             |--------|  INSERT  |-----|  INSERT  |-----|   UPDATE...  |
+                      |   ...    |     |   ...    |     |              |-------|
+                      |----------|     |----------|     |--------------|       |
+                                                                               |
+                                                                               |
+                                                               |---------------|
+                                                               |
+                                                               |
+                                                        |---------------|
+                                                        |  ROLLBACK     |
+                                                        |  TRANSACTION  |
+                                                        |---------------|
+         
+         
+     TRANSACTION di MySQL :
+     
+        --------------------------------------------------------------------   
+        |         Perintah          |               Keterangan             |
+        |---------------------------|--------------------------------------|
+        |                           | Memulai proses transaksi, proses     |
+        | START TRANSACTION         | selanjutnya akan dianggap transaksi  |    
+        |                           | sampai perintah COMMIT atau ROLLBACK |  
+        |---------------------------|--------------------------------------|
+        | COMMIT                    | Menyimpan secara permanen seluruh    | 
+        |                           | proses transaksi                     | 
+        |---------------------------|--------------------------------------| 
+        | ROLLBACK                  | Membatalkan secara permanen seluruh  | 
+        |                           | proses transaksi                     | 
+        --------------------------------------------------------------------  
+        
+     
+     INSERT DATA dengan Diakhiri COMMIT :
+        
+        START TRANSACTION ;
+        
+        INSERT INTO guestbooks (email, title, content)
+        VALUES ('contoh@gmail.com', 'Contoh', 'Contoh'),
+               ('contoh2@gmail.com', 'Contoh', 'Contoh'),
+               ('contoh3@gmail.com', 'Contoh', 'Contoh');
+               
+        COMMIT ;
+        
+     INSERT DATA dengan Diakhiri ROLLBACK
+        
+        START TRANSACTION ;
+        
+        DELETE FROM guestbooks;
+        
+        ROLLBACK ;
+        
+
+Yang Tidak Bisa Menggunakan Transaction
+
+- Perintah DDL (Data Definition Language) tidak bisa menggunakan fitur transaction
+- DDL adalah perintah-perintah yang digunakan untuk merubah struktur, seperti 
+  membuat tabel, menambah kolom, menghapus tabel, menghapus database, dan sejenisnya
+- Transaction hanya bisa dilakukan pada perintah DML (Data Manipulation Language),
+  seperti operasi INSERT, UPDATE dan DELETE
+        
+        
+        
+    
                                                         
                                                         
                                                         
