@@ -1,0 +1,23 @@
+Kenapa butuh Transaction?
+
+- Saat membuat aplikasi berbasis database, jarang sekali kita akan melakukan satu jenis
+  perintah SQL per yang dibuat aplikasi 
+- Contoh, ketika membuat toko online, ketika customer menekan tombol pesan, banyak yang
+  kita lakukan, misal
+    
+    -> Membuat data pesanan di table order
+    -> Membuat data detail di table order detail
+    -> Menurunkan quantity di table produk
+    -> Dan yang lainnya
+    
+- Artinya bisa saja dalam satu aksi, kita akan melakukan beberapa perintah sekaligus
+- Jika terjadi kesalahan di salah satu perintah, harapannya adalah perintah-perintah
+  sebelumnya dibatalkan, agar data tetap konsisten
+
+
+
+
+
+
+
+
