@@ -1,0 +1,54 @@
+# ROOT USER
+
+- Secara default, MySQL membuat root user sebagai super administrator
+- Namun best practice nya, saat kita menjalankan MySQL dengan aplikasi yang kita buat,
+  sangat disarankan tidak menggunakan user root
+- Lebih baik kita buat user khusus untuk tiap aplikasi, bahkan kita bisa batasi hak
+  akses user tersebut, seperti hanya melakukan SELECT, dan tidak boleh melakukan
+  INSERT, UPDATE atau DELETE
+
+
+# HAK AKSES DAN USER
+
+- Dalam USER MANAGEMENT MySQL, kita akan mengenai istilah Hak Akses dari User
+
+
+# DAFTAR HAK AKSES
+
+- Ada banyak sekali akses di MySQL 
+- Kita bisa melihatnya di daftar tabel yang terdapat di halaman berikut :
+  https://dev.mysql.com/doc/refman/8.0/en/grant.html
+
+      MEMBUAT/MENGHAPUS User :
+          
+          CREATE USER 'udin'@'localhost';
+          CREATE USER 'karim'@'%';
+          
+          DROP USER 'udin'@'localhost';
+          DROP USER 'Karim'^@'%';
+
+      
+       MENAMBAH/MENGHAPUS HAK AKSES KE User :
+          
+Membuat-> GRANT SELECT ON belajar_mysql.* TO 'eko'@'localhost';
+          GRANT SELECT, INSERT, UPDATE. DELETE ON belajar_mysql.* TO 'Karim'@'%'; 
+
+SHOW ---> SHOW GRANTS FOR 'eko'@'localhost';
+          SHOW GRANTS FOR 'Karim'@'%'
+          
+HAPUS --> REVOKE SELECT ON belajar_mysql.* FROM 'eko'@'localhost';
+          REVOKE SELECT, INSERT, UPDATE, DELETE ON belajar_mysql.* FROM 'Karim'@'%'
+
+
+        MENGUBAH PASSWORD untuk User :
+            
+           SET PASSWORD FOR 'eko'@'localhost' = 'Password';
+           SET PASSWORD FOR 'Karim'@'%' = 'Password';
+            
+
+
+
+
+
+
+
