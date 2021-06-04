@@ -1,0 +1,46 @@
+# RESTORE DATABASE
+
+- Selain melakukan backup database, di MySQL juga kita bisa melakukan proses restore data
+  dari file hasil backup
+- Untuk melakukan restore database, kita bisa menggunakan aplikasi mysql client atau
+  menggunakan perintah SOURCE di MySQL
+  
+      MELAKUKAN IMPORT DATABASE :
+          
+          > mysql -u root -p
+          
+          > create database belajar_mysql_import;
+          
+          > SHOW DATABASES;
+          
+          > mysql --user=root --password belajar_mysql_import < /Users/user/Desktop/belajar_mysql.sql
+          
+          > mysql -u root -p  
+          
+          > SHOW DATABASES;
+          
+          > use belajar_mysql_import;
+          
+          > SHOW TABLES;
+          
+          > Select * from customers;
+
+     IMPORT DATABASE MENGGUNAKAN SQL :
+          
+          > create database belajar_mysql_import_source;
+          
+          > use belajar_mysql_import_source;
+          
+          > show tables;
+          
+          > SOURCE /Users/user/Desktop/belajar_mysql.sql
+          
+          > show tables;
+          
+          > select * from customers;
+          
+
+
+
+
+
