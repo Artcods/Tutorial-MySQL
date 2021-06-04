@@ -141,6 +141,7 @@
 # LOCKING TABLE
 
 - MySQL mendukung proses locking terhadap sebuah tabel
+
 - Jika kita me lock table, artinya satu seluruh data di table tersebut 
   akan di Lock
   
@@ -153,10 +154,69 @@
 - Setelah selesai melakukan lock table, kita bisa melakukan unlock 
   dengan perintah : UNLOCK TABLES
   
-  
-  
-  
-  
-  
+     Behaviour Lock Tables :
+     
+        --------------------------------------------------------------------------
+        | Perintah     | Proses yang Melakukan Lock | Proses Lain                |
+        |--------------|----------------------------|----------------------------|
+        | READ         | Hanya bisa melakukan read  | Hanya bisa melakukan read  |
+        |              | terhadap tabel tersebut    | terhadap tabel tersebut,   | 
+        |              |                            | tidak bisa melakukan write |
+        |--------------|----------------------------|----------------------------|
+        | WRITE        | Bisa melakukan read dan    | Tidak bisa melakukan read  |
+        |              | write terhadap tabel       | terhadap tabel tersebut,   |
+        |              | tersebut                   | tidak bisa melakukan write |
+        |--------------|----------------------------|----------------------------|
+
+
+    Simulasi READ
     
+        -----------------------                   ----------------------- 
+        | # LOCK TABLE User 1 |                   | # LOCK TABLE User 2 |
+        --------------------------------|--------------------------------
+        |                               |                               | 
+        | LOCK TABLES products READ;    | SELECT * FROM bisa products;  |
+        |                               |                               |
+        | UPDATE products               | UPDATE products               |
+        | SET quantity = 100            | SET quantity = 100            |
+        | WHERE id = 'P0001';           | WHERE id = 'P0001';           |
+        |                               |                               |
+        | UNLOCK TABLES;                |                               |
+        |                               |                               |
+        -----------------------------------------------------------------
+                        ^                              ^
+                        |                              |
+                        |                              |
+                        |                              |
+                 Hanya Bisa Read               HANYA BISA READ
+               HANYA LOCK TABLES READ           GK BISA WRITE
+
+
+    Simulasi WRITE
+    
+        -----------------------                   ----------------------- 
+        | # LOCK TABLE User 1 |                   | # LOCK TABLE User 2 |
+        --------------------------------|--------------------------------
+        |                               |                               | 
+        | LOCK TABLES products WRITE;   | SELECT * FROM bisa products;  |
+        |                               |                               |
+        | UPDATE products               | UPDATE products               |
+        | SET quantity = 100            | SET quantity = 100            |
+        | WHERE id = 'P0001';           | WHERE id = 'P0001';           |
+        |                               |                               |
+        | UNLOCK TABLES;                |                               |
+        |                               |                               |
+        -----------------------------------------------------------------
+                        ^                              ^
+                        |                              |
+                        |                              |
+                        |                              |
+                     Bisa READ                 Tidak BISA READ
+                  Dan Bisa WRITE                GK BISA WRITE
+
+
+
+
+
+
     
