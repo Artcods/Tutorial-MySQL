@@ -33,20 +33,21 @@
 
      MELAKUKAN LOCKING RECORD :
      
-        -----------------------------------------------------------------------------
-          ----------                          |   ----------
-          | User 1 |                          |   | User 2 |
-          ----------                          |   ----------
-                                              |
-          START TRANSACTION;                  |   START TRANSACTION
-                                              |   
-          SELECT * FROM guestbooks;           |   SELECT * FROM guestbooks
-                                              |   
-          UPDATE guestbooks                   |   UPDATE guestbooks
-          SET title = 'Diubah Oleh User 1';   |   SET title = 'Diubah Oleh User 2'
-                                              | 
-          COMMIT;                             |   COMMIT;
-       -------------------------------------------------------------------------------
+
+   |-----------------------------------------------------------------------------|
+   |    ----------                          |   ----------                       | 
+   |    | User 1 |                          |   | User 2 |                       | 
+   |    ----------                          |   ----------                       | 
+   |                                        |                                    | 
+   |    START TRANSACTION;                  |   START TRANSACTION                | 
+   |                                        |                                    | 
+   |    SELECT * FROM guestbooks;           |   SELECT * FROM guestbooks         | 
+   |                                        |                                    |
+   |    UPDATE guestbooks                   |   UPDATE guestbooks                | 
+   |    SET title = 'Diubah Oleh User 1';   |   SET title = 'Diubah Oleh User 2' | 
+   |                                        |                                    | 
+   |    COMMIT;                             |   COMMIT;                          |
+   -------------------------------------------------------------------------------
                                                                    ^
                                                                    |
                                                                    |
@@ -72,23 +73,23 @@
 
      MELAKUKAN LOCKING RECORD MANUAL :
      
-     ---------------------------------------------------------------------------
-        ----------                        |  ----------
-        | User 1 |                        |  | User 2 |
-        ----------                        |  ----------
-                                          |   
-        START TRANSACTION;                |  START TRANSACTION;
-                                          |
-        SELECT * FROM products            |  SELECT * FROM products 
-        WHERE id = 'P0001' FOR UPDATE;    |  WHERE id = 'P0001' FOR UPDATE;
-                                          |
-        UPDATE products                   |  UPDATE products
-        SET quantity = quantity - 10      |  SET quantity = quantity - 10
-        WHERE id = 'P0001';               |  WHERE id = 'P0001'
-                                          |  
-        COMMIT;                           |  COMMIT;
-                                          |
-      ---------------------------------------------------------------------------
+    |---------------------------------------------------------------------------|
+    |   ----------                        |  ----------                         |
+    |   | User 1 |                        |  | User 2 |                         |
+    |   ----------                        |  ----------                         | 
+    |                                     |                                     |
+    |   START TRANSACTION;                |  START TRANSACTION;                 |
+    |                                     |                                     |
+    |   SELECT * FROM products            |  SELECT * FROM products             |
+    |   WHERE id = 'P0001' FOR UPDATE;    |  WHERE id = 'P0001' FOR UPDATE;     |
+    |                                     |                                     |
+    |   UPDATE products                   |  UPDATE products                    |
+    |   SET quantity = quantity - 10      |  SET quantity = quantity - 10       |
+    |   WHERE id = 'P0001';               |  WHERE id = 'P0001'                 |
+    |                                     |                                     |
+    |   COMMIT;                           |  COMMIT;                            |
+    |                                     |                                     |
+    |---------------------------------------------------------------------------|
     
   
 # Deadlock
@@ -119,17 +120,17 @@
   
    Simulasi DEADLOCK :
       
-      --------------------------------------------------------------------------
-      # DEADLOCK User 1                 | # DEADLOCK User 2
-                                        | 
-        START TRANSACTION;              | START TRANSACTION  
-                                        |  
-        SELECT * FROM products          | SELECT * FROM products
-        WHERE id = 'P0001' FOR UPDATE   | WHERE id = 'P0002' FOR UPDATE
-                                        |
-        SELECT * FROM products          | SELECT * FROM products   
-        WHERE id = 'P0002' FOR UPDATE   | WHERE id = 'P0001' FOR UPDATE
-      ---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------|
+    | # DEADLOCK User 1                 | # DEADLOCK User 2                    |   
+    |                                   |                                      | 
+    |   START TRANSACTION;              | START TRANSACTION                    | 
+    |                                   |                                      |   
+    |   SELECT * FROM products          | SELECT * FROM products               | 
+    |   WHERE id = 'P0001' FOR UPDATE   | WHERE id = 'P0002' FOR UPDATE        |  
+    |                                   |                                      | 
+    |   SELECT * FROM products          | SELECT * FROM products               | 
+    |   WHERE id = 'P0002' FOR UPDATE   | WHERE id = 'P0001' FOR UPDATE        | 
+    |--------------------------------------------------------------------------|
                         |                           |  
                         |                           |
                         -----------------------------
@@ -214,8 +215,43 @@
                      Bisa READ                 Tidak BISA READ
                   Dan Bisa WRITE                GK BISA WRITE
 
+LOCKING INSTANCE
 
+- Salah satu fitur lock lainnya di MySQL adalah lock instance
 
+- Lock instance adalah perintah locking yang akan membuat perintah
+
+  DDL (Data Definition Language) akan diminta menunggu sampai proses unlock
+  instance
+  
+- Biasanya proses locking instance ini terjadi ketika misal kita ingin melakukan 
+  backup data, agar tidak bisa terjadi perubahan terhadap struktur tabel misalnya,
+  kita bisa melakukan locking instance
+  
+- Setelah proses backup selesai, baru kita unlock lagi instance nya
+
+- Untuk melakukan locking instance, kita bisa gunakan perintah :
+        -> LOCK INSTANCE FOR BACKUP;
+        
+- Untuk melakukan unlock instance, kita bisa gunakan perintah :
+        -> UNLOCK INSTANCE;
+  
+  
+      Simulasi LOCKING INSTANCE :
+      
+        ----------                                            ----------
+        | User 1 |                                            | User 2 |
+        ----------------------------|----------------------------------|
+        |                           |                                  |   
+        | LOCK INSTANCE FOR BACKUP; | ALTER TABLE products             | 
+        |                           | ADD COLUMN sample VARCHAR (100)  | 
+        | UNLOCK INSTANCE           |                                  | 
+        |--------------------------------------------------------------|       
+                     ^                               ^
+                     |                               |
+                     |                               |
+                MengLock DDL               Yang Ini Akan Menunggu     
+    
 
 
 
