@@ -72,8 +72,8 @@ Jenis-Jenis JOIN table di MySQL, diantaranya :
 
     CREATE TABLE numbers
     (
-        id  INT NOT NULL,
-        PRIMARY KEY (id)
+    id  INT NOT NULL,
+    PRIMARY KEY (id)
     ) ENGINE = InnoDB;
     
     INSERT TABEL :
